@@ -1,4 +1,4 @@
-import {ProductCategory} from 'src/app/products/models/product-category.enum'
+import {ProductCategory} from 'src/app/products/models/product-category.enum';
 
 interface IProduct {
     id: number;
@@ -7,8 +7,8 @@ interface IProduct {
     price: number;
     isAvailable: boolean;
   }
-  
-export class Product implements IProduct {
+
+export class ProductModel implements IProduct {
   constructor(
     public id: number,
     public name: string,
