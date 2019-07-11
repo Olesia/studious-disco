@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Cart
+        <span class="glyphicon glyphicon-shopping-cart pull-right"></span>
+    </div>
+    <div class="panel-body">
+        <div *ngIf="cartList && cartList.length>0; else emptyCart">
+            <div *ngFor="let product of cartList">
+                <div>
+                    {{product.name}} - {{product.price}}
+                    <a (click)="removeProductFromCart(product)" class="pull-right">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </div>
+            </div>
+            <b>Total price</b>: {{ totalPrice }}
+        </div>
+        <ng-template #emptyCart>
+            The cart is empty
+        </ng-template>
+    </div>
+</div>
