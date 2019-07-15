@@ -7,14 +7,15 @@ import { CartService } from 'src/app/cart/services/cart.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-
 export class ProductComponent {
   @Input() product: ProductModel;
 
-  constructor(public cartService: CartService) { }
+  // не надо внедрять зависимость
+  constructor(public cartService: CartService) {}
 
   onBuy() {
     console.log(this.product.name + ' is added to the cart');
+    // генерить аутпут
     this.cartService.addProduct(this.product);
   }
 }
