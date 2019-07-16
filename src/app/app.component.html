@@ -2,7 +2,7 @@
     <p class="h2">My Shop</p>
     <div class="row">
         <div class="col-xs-8">
-            <app-product-list></app-product-list>
+            <app-product-list (addToCart)="onProductAdded($event)"></app-product-list>
         </div>
         <div class="col-xs-4">
             <app-cart></app-cart>
