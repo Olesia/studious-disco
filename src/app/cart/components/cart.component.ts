@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class CartComponent implements OnInit, OnDestroy {
   cartList: Array<ProductModel>;
   totalPrice: number;
+  totalCount: number;
 
   private sub: Subscription;
 
@@ -21,8 +22,11 @@ export class CartComponent implements OnInit, OnDestroy {
     this.sub = this.cartService.cartList$.subscribe(
       data => (this.cartList = data,
         this.totalPrice = 0,
+        this.totalCount = 0,
+
         this.cartList.forEach(element => {
           this.totalPrice += element.price;
+          this.totalCount ++;
         })),
     );
   }
