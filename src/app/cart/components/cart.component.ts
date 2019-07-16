@@ -21,6 +21,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.sub = this.cartService.cartList$.subscribe(
       data => (this.cartList = data,
         this.totalPrice = 0,
+        // обычно в реальности еще будет фигурировать количество
         this.cartList.forEach(element => {
           this.totalPrice += element.price;
         })),
