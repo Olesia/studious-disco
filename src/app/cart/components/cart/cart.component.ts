@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CartService } from '../services/cart.service';
-import { ProductModel } from 'src/app/products/models/product.model';
 import { Subscription } from 'rxjs';
+import { CartService } from '../../services/cart.service';
+import { CartItemModel } from '../../models/cart-item-model';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 
 export class CartComponent implements OnInit, OnDestroy {
-  cartList: Array<ProductModel>;
+  cartList: Array<CartItemModel>;
   totalPrice: number;
   totalCount: number;
 
@@ -20,22 +20,26 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.cartService.cartList$.subscribe(
-      data => (this.cartList = data,
-        this.totalPrice = 0,
-        this.totalCount = 0,
-
-        this.cartList.forEach(element => {
-          this.totalPrice += element.price;
-          this.totalCount ++;
-        })),
-    );
+      data => (
+        this.cartList = data,
+        this.totalPrice = this.cartService.totalPrice,
+        this.totalCount = this.cartService.totalCount
+    ));
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  removeProductFromCart(product: ProductModel) {
+  onCartItemRemoving(product: CartItemModel): void {
     this.cartService.removeProduct(product);
+  }
+
+  onPlusOne(cartItem: CartItemModel): void {
+    this.cartService.plusOneCartItem(cartItem);
+  }
+
+  onMinusOne(cartItem: CartItemModel): void {
+    this.cartService.minusOneCartItem(cartItem);
   }
 }

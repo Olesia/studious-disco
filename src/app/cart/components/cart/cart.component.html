@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Cart
+        <span class="glyphicon glyphicon-shopping-cart pull-right"></span>
+    </div>
+    <div class="panel-body">
+        <div *ngIf="cartList && cartList.length>0; else emptyCart">
+            <div *ngFor="let cartItem of cartList">
+                <app-cart-item [cartItem]="cartItem" (removeCartItem)="onCartItemRemoving($event)"
+                    (plusOne)="onPlusOne($event)" (minusOne)="onMinusOne($event)"></app-cart-item>
+            </div>
+            <div class="pull-left">
+                <b>Total count</b>: {{ totalCount }}
+            </div>
+            <div class="pull-right">
+                <b>Total price</b>: {{ totalPrice }}
+            </div>
+        </div>
+        <ng-template #emptyCart>
+            The cart is empty
+        </ng-template>
+    </div>
+</div>
