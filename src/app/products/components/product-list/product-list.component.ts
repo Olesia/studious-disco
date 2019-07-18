@@ -14,11 +14,13 @@ export class ProductListComponent implements OnInit {
 
   constructor(public productService: ProductsService, public cartService: CartService) { }
 
-  onProductAdded(product: ProductModel): void {
-    this.cartService.addProduct(product);
-  }
-
   ngOnInit() {
     this.products = this.productService.getProducts();
+  }
+
+  onProductAdded(product: ProductModel): void {
+    if (product.isAvailable) {
+      this.cartService.addProduct(product);
+    }
   }
 }
