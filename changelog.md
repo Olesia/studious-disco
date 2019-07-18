@@ -21,6 +21,6 @@
 - added functionality on click on buy button couple of times
 
 ### Updated
-- ProductComponent is a presentation component and use Outputs now
+- ProductComponent is a presentation component and use Outputs now, changeDetection is changed.
 - Buttton 'Buy' is inavailable if product does not exist
 - Cart service calculations are changed
