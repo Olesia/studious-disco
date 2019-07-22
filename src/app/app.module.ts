@@ -8,12 +8,10 @@ import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // <-- старайтесь, чтобы этот модуль был последним
     SharedModule,
     CartModule,
     ProductsModule
@@ -21,4 +19,4 @@ import { ProductsModule } from './products/products.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
