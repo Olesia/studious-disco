@@ -24,3 +24,10 @@
 - ProductComponent is a presentation component and use Outputs now, changeDetection is changed.
 - Buttton 'Buy' is inavailable if product does not exist
 - Cart service calculations are changed
+
+## [3.0.0] - 2019-07-23
+###Added
+- Functionality: Clear cart
+- Services: LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService,          GeneratorFactoryService(function) - according to the task
+- Components: AboutComponent - demonstrate all services described above
+- Directives: Font-changer - demonstrate using render2 and elementRef

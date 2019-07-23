@@ -42,4 +42,8 @@ export class CartComponent implements OnInit, OnDestroy {
   onMinusOne(cartItem: CartItemModel): void {
     this.cartService.minusOneCartItem(cartItem);
   }
+
+  onClearCart(): void {
+    this.cartService.clearCart();
+  }
 }

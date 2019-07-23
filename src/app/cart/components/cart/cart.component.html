@@ -1,6 +1,10 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Cart
-        <span class="glyphicon glyphicon-shopping-cart pull-right"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-shopping-cart pull-left"></span> &nbsp;
+        Cart
+        <a (click)="onClearCart()" class="pull-right" title="Clear Cart">
+            <span class="glyphicon glyphicon-trash"></span>
+        </a>
     </div>
     <div class="panel-body">
         <div *ngIf="cartList && cartList.length>0; else emptyCart">
