@@ -1,13 +1,12 @@
 <div appBgChanger class="panel-body">
     {{cartItem.product.name}} - {{cartItem.product.price}}
     <a (click)="removeProductFromCart(cartItem)" class="pull-right" style="margin-left: 15px;">
-        <span class="glyphicon glyphicon-trash"></span>
+        <span class="glyphicon glyphicon-remove"></span>
     </a>
   
     <div class="pull-right">
         <a (click)="minusOneCartItem()"> <span class="glyphicon glyphicon-minus"></span></a>
-        {{ cartItem.count }}
+        {{cartItem.count}}
         <a (click)="plusOneCartItem()"> <span class="glyphicon glyphicon-plus"></span></a>
     </div>
-    
 </div>

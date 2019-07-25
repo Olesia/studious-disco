@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">About
+    </div>
+    <div class="panel-body" appFontChanger = "14">
+        <p> User # {{ userInfo.id }}: 
+            <span *ngIf="userInfo.login"> {{ userInfo.login }}</span>
+            <span *ngIf="userInfo.email"> {{ userInfo.email }}</span>
+        </p>
+        <p> Application: {{ applicationInfo.App }}</p>
+        <p> Version: {{ applicationInfo.Ver }}</p>
+
+        <p>FactoryString: {{factoryString}}</p>
+    </div>
+</div>

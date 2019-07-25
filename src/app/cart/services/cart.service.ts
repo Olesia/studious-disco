@@ -15,12 +15,12 @@ export class CartService {
 
   constructor() { }
 
-  addProduct(product: ProductModel) {
+  addProduct(cartItem: CartItemModel) {
     this.totalCount++;
-    this.totalPrice += product.price;
+    this.totalPrice += cartItem.product.price;
 
-    const index = this.CheckExistingIndex(product);
-    index === -1 ? this.cartList.push(new CartItemModel(product, 1)) : this.cartList[index].count ++;
+    const index = this.CheckExistingIndex(cartItem.product);
+    index === -1 ? this.cartList.push(new CartItemModel(cartItem.product, 1)) : this.cartList[index].count ++;
     this.cartList$.next(this.cartList);
   }
 
@@ -48,6 +48,14 @@ export class CartService {
 
     const index = this.CheckExistingIndex(cartItem.product);
     cartItem.count === 1 ? this.cartList.splice(index, 1) : cartItem.count --;
+    this.cartList$.next(this.cartList);
+  }
+
+  clearCart() {
+    this.totalCount = 0;
+    this.totalPrice = 0;
+
+    this.cartList = [];
     this.cartList$.next(this.cartList);
   }
 
