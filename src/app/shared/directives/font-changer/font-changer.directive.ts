@@ -10,7 +10,8 @@ export class FontChangerDirective {
   @HostListener('click', ['$event'])
   onClick(event: Event) {
     this.size ++;
-    this.render.setStyle(this.el.nativeElement, 'font-size', this.size.toString() + 'px');
+    // this.render.setStyle(this.el.nativeElement, 'font-size', this.size.toString() + 'px');
+    this.render.setStyle(this.el.nativeElement, 'font-size', `${this.size}px`);
   }
 
 }
