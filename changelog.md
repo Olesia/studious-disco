@@ -31,3 +31,13 @@
 - Services: LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService,          GeneratorFactoryService(function) - according to the task
 - Components: AboutComponent - demonstrate all services described above
 - Directives: Font-changer - demonstrate using render2 and elementRef
+
+## [4.0.0] - 2019-07-26
+###Added
+- Currency filters for all prices
+- Date filter for updated date on app component
+- Uppercase filter for product - category
+- OrderByPipe filter for cart items, added select and checkbox to configure it
+
+###Updated
+- GetProducts to returns promise 
