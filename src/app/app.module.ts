@@ -15,9 +15,10 @@ import { AboutComponent } from './layout/components/about/about.component';
     AppComponent,
     AboutComponent
   ],
+
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // <-- старайтесь, чтобы этот модуль был последним
     SharedModule,
     CoreModule,
     CartModule,
@@ -26,4 +27,4 @@ import { AboutComponent } from './layout/components/about/about.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
