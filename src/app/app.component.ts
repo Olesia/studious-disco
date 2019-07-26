@@ -7,6 +7,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class AppComponent implements AfterViewInit {
   title = 'shop';
+  dateOfLastUpdates = new Date(2019, 7, 23);
   @ViewChild('appTitle', { static: false }) projectTitle: ElementRef<HTMLHeadingElement>;
 
   ngAfterViewInit() {

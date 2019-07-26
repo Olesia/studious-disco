@@ -16,7 +16,7 @@
                 <b>Total count</b>: {{ totalCount }}
             </div>
             <div class="pull-right">
-                <b>Total price</b>: {{ totalPrice }}
+                <b>Total price</b>: {{ totalPrice | currency : '₴'}}
             </div>
         </div>
         <ng-template #emptyCart>

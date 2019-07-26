@@ -1,5 +1,5 @@
 <div appBgChanger class="panel-body">
-    {{cartItem.product.name}} - {{cartItem.product.price}}
+    {{cartItem.product.name}} - {{cartItem.product.price | currency : '₴'}}
     <a (click)="removeProductFromCart(cartItem)" class="pull-right" style="margin-left: 15px;">
         <span class="glyphicon glyphicon-remove"></span>
     </a>
