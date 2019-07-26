@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
+
 @NgModule({
   declarations: [ProductComponent, ProductListComponent],
   imports: [CommonModule],
   exports: [
-    // Этот компонент может быть приватным
-    // Он не используется в компонентах других модулей
-    // ProductComponent,
     ProductListComponent
   ]
 })
