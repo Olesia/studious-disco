@@ -2,8 +2,9 @@
     <div class="col-xs-6">
         <ul>
             <li>Name: {{ product.name }}</li>
+            <li>Category: {{ product.category | uppercase }}</li>
             <li>Description: {{ product.description }}</li>
-            <li>Price: {{ product.price }}</li>
+            <li>Price: {{ product.price | currency : '₴' }}</li>
             <li>Sizes: {{ product.availableSizes }}</li>
         </ul>
     </div>

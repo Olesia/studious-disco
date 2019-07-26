@@ -18,11 +18,11 @@ import { AboutComponent } from './layout/components/about/about.component';
 
   imports: [
     BrowserModule,
-    AppRoutingModule, // <-- старайтесь, чтобы этот модуль был последним
     SharedModule,
     CoreModule,
     CartModule,
-    ProductsModule
+    ProductsModule,
+    AppRoutingModule // <-- старайтесь, чтобы этот модуль был последним
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { CartItemModel } from '../../models/cart-item-model';
@@ -13,12 +13,17 @@ export class CartComponent implements OnInit, OnDestroy {
   cartList: Array<CartItemModel>;
   totalPrice: number;
   totalCount: number;
-
+  sortByField = 'name';
+  sortIsDesc = true;
   private sub: Subscription;
+
+  @ViewChild('selectSort', { static: false }) selectedValue: ElementRef;
+  @ViewChild('isDesc', { static: false }) selectedDesc: ElementRef;
 
   constructor(public cartService: CartService) { }
 
   ngOnInit() {
+    this.sortIsDesc = true;
     this.sub = this.cartService.cartList$.subscribe(
       data => (
         this.cartList = data,
@@ -29,6 +34,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  onCheckBoxChange() {
+    this.sortIsDesc = this.selectedDesc.nativeElement.checked;
+  }
+
+  onSelectChange() {
+    this.sortByField = this.selectedValue.nativeElement.value;
   }
 
   onCartItemRemoving(product: CartItemModel): void {

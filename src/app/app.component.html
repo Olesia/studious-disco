@@ -1,5 +1,6 @@
 <div class="container">
     <h1 #appTitle></h1>
+    <h6>{{ dateOfLastUpdates | date: 'dd MMMM yyyy'}}</h6>
     <div class="row">
         <div class="col-xs-8">
             <app-product-list (addToCart)="onProductAdded($event)"></app-product-list>

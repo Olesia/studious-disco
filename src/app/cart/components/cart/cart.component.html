@@ -7,8 +7,16 @@
         </a>
     </div>
     <div class="panel-body">
+            <select #selectSort (change)="onSelectChange()">
+                    <option value="name">Name</option>
+                    <option value="price">Price</option>
+                    <option value="count">Count</option>
+            </select> &nbsp;
+            <input type="checkbox" [checked]="sortIsDesc" #isDesc (change)="onCheckBoxChange()"/>
+            Is Descending
+        <br/>
         <div *ngIf="cartList && cartList.length>0; else emptyCart">
-            <div *ngFor="let cartItem of cartList">
+            <div *ngFor="let cartItem of cartList | orderBy: sortByField: sortIsDesc">
                 <app-cart-item [cartItem]="cartItem" (removeCartItem)="onCartItemRemoving($event)"
                     (plusOne)="onPlusOne($event)" (minusOne)="onMinusOne($event)"></app-cart-item>
             </div>
@@ -16,7 +24,7 @@
                 <b>Total count</b>: {{ totalCount }}
             </div>
             <div class="pull-right">
-                <b>Total price</b>: {{ totalPrice }}
+                <b>Total price</b>: {{ totalPrice | currency : '₴'}}
             </div>
         </div>
         <ng-template #emptyCart>

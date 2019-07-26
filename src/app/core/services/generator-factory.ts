@@ -8,4 +8,3 @@ export function GeneratorFactoryService(n: number) {
       data.getRandomStr(n);
   }
 
-

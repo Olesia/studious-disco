@@ -11,12 +11,12 @@ import { CartItemModel } from 'src/app/cart/models/cart-item-model';
 })
 
 export class ProductListComponent implements OnInit {
-  products: Array<ProductModel>;
+  products: Promise<Array<ProductModel>>;
 
   constructor(public productService: ProductsService, public cartService: CartService) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.products = Promise.resolve(this.productService.getProducts());
   }
 
   onProductAdded(product: ProductModel): void {
