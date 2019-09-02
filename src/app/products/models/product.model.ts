@@ -16,7 +16,9 @@ export class ProductModel implements IProduct {
     public price: number = 0,
     public isAvailable: boolean = false,
     public category: ProductCategory,
-    public availableSizes: number[] = []
+    public availableSizes: number[] = [],
+    public selectedSize: number = 0,
+    public reviews: string[] = []
   ) {
   }
 }
