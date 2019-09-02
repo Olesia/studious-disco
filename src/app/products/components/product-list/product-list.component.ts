@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductsService } from 'src/app/products/services/products.service';
 import { ProductModel } from '../../models/product.model';
 import { CartService } from 'src/app/cart/services/cart.service';
-import { CartItemModel } from 'src/app/cart/models/cart-item-model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -13,15 +13,16 @@ import { CartItemModel } from 'src/app/cart/models/cart-item-model';
 export class ProductListComponent implements OnInit {
   products: Promise<Array<ProductModel>>;
 
-  constructor(public productService: ProductsService, public cartService: CartService) { }
+  constructor(public productService: ProductsService, public cartService: CartService,
+              private router: Router, private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.products = Promise.resolve(this.productService.getProducts());
   }
 
   onProductAdded(product: ProductModel): void {
-    if (product.isAvailable) {
-      this.cartService.addProduct(new CartItemModel(product, 1));
-    }
+    const link = ['cart', 'add', product.id, false];
+    this.router.navigate([{ outlets: { cart: link }}]);
   }
 }

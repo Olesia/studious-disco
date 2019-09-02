@@ -1,0 +1,15 @@
+<h4>Orders</h4>
+<button class="btn btn-danger pull-right" (click)="clearOrders()">Clear order list</button>
+<div *ngFor="let order of ordersList;  let i = index">
+    <p>Order # {{ i +1 }}</p>
+    <div *ngFor="let cartItem of order;">
+        <ul>
+            <li>Name: {{ cartItem.product.name }}</li>
+            <li>Category: {{ cartItem.product.category | uppercase }}</li>
+            <li>Description: {{ cartItem.product.description }}</li>
+            <li>Price: {{ cartItem.product.price | currency : '₴' }}</li>
+            <li>Count: {{cartItem.count}}</li>
+        </ul>
+    </div>
+
+</div>

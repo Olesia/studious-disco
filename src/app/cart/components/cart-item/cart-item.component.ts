@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CartItemModel } from '../../models/cart-item-model';
 
+
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',

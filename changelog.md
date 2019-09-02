@@ -41,3 +41,17 @@
 
 ###Updated
 - GetProducts to returns promise 
+
+##[5.0.0] - 2019-09-02
+###Added
+- Routing for product-list
+- Reviews component + routing
+- Adding to the cart routing
+- Remove from the cart routing
+- Orders component + routing
+- Admin + routing
+- Admin functionality for changing of Products and viewing of orders
+- Guard for resolving og edit product
+- Login functionality
+- Saving products and orders to Local storage
+- Setting products to default list

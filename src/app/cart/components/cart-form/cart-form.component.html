@@ -1,0 +1,32 @@
+<div *ngIf="!isDeletedParam; else deleteForm">
+    <div>
+        <p>Adding product to the cart: </p>
+        <div *ngIf="cartItem">
+            <ul>
+                <li>Name: {{ cartItem.product.name }}</li>
+                <li>Category: {{ cartItem.product.category | uppercase }}</li>
+                <li>Description: {{ cartItem.product.description }}</li>
+                <li>Price: {{ cartItem.product.price | currency : '₴' }}</li>
+                <li>Select size:
+                    <select (change)="onSelectChange()" #sizeSelect>
+                        <option *ngFor="let size of cartItem.product.availableSizes" [ngValue]="size">
+                            {{ size }}
+                        </option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <br/>
+        <button type="button" class="btn btn-primary pull-right" (click)="onSaveCartItem()">Add</button>
+        <button type="button" class="btn btn-default" (click)="onGoBack()">Cancel</button>
+    </div>
+</div>
+<ng-template #deleteForm>
+    <p>
+        Are you sure you want to delete product from cart?
+    </p>
+    <button type="button" class="btn btn-primary pull-right" (click)="onSaveCartItem()">Yes
+    </button>
+    <button type="button" class="btn btn-default" (click)="onGoBack()">No
+    </button>
+</ng-template>

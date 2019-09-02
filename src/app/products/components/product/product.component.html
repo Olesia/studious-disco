@@ -9,6 +9,7 @@
         </ul>
     </div>
     <div class="col-xs-6" *ngIf="product.isAvailable">
-        <button (click)="onBuy()" class="btn btn-default">Buy</button>
+        <button (click)="onBuy()" class="btn btn-primary margin-r-5">Add to cart</button>
+        <button (click)="onShowReviews(product.id)" class="btn btn-default">Show reviews</button>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { ProductModel } from 'src/app/products/models/product.model';
 import { CartItemModel } from '../models/cart-item-model';
 
@@ -15,6 +15,10 @@ export class CartService {
 
   constructor() { }
 
+  getCartItemsList(): Observable<CartItemModel[]> {
+    const result: Observable<Array<CartItemModel>> = of(this.cartList);
+    return result;
+  }
   addProduct(cartItem: CartItemModel) {
     this.totalCount++;
     this.totalPrice += cartItem.product.price;
@@ -55,11 +59,11 @@ export class CartService {
     this.totalCount = 0;
     this.totalPrice = 0;
 
-    this.cartList = [];
+    this.cartList.length = 0;
     this.cartList$.next(this.cartList);
   }
 
   private CheckExistingIndex(product: ProductModel): number {
-    return this.cartList.findIndex(c => c.product === product);
+    return this.cartList.findIndex(c => c.product.id === product.id && c.product.selectedSize === product.selectedSize);
   }
 }
