@@ -55,3 +55,11 @@
 - Login functionality
 - Saving products and orders to Local storage
 - Setting products to default list
+
+##[6.0.0] - 2019-09-04
+###Added
+- Json server
+- ProductsPromiseService and ProductObservableService
+- Using new services on admin - manage-products
+- TimeInterseptor with filter
+- AppSettings service and use app settings on AboutComponent

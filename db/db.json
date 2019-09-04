@@ -1,0 +1,87 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Dress",
+      "description": "Summer dress",
+      "price": 302,
+      "isAvailable": false,
+      "category": "Clothing",
+      "availableSizes": [
+        36,
+        38,
+        40,
+        42,
+        44,
+        46
+      ],
+      "selectedSize": 36,
+      "reviews": [
+        "review #11",
+        "review #12"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Skirt1",
+      "description": "Nice skirt",
+      "price": 151,
+      "isAvailable": true,
+      "category": "Clothing",
+      "availableSizes": [
+        36,
+        38,
+        40,
+        42,
+        44,
+        46
+      ],
+      "selectedSize": 36,
+      "reviews": [
+        "review #21",
+        "review #22"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Pants",
+      "description": "Pants description",
+      "price": 200,
+      "isAvailable": true,
+      "category": "Clothing",
+      "availableSizes": [
+        36,
+        38,
+        40,
+        42,
+        44,
+        46
+      ],
+      "selectedSize": 36,
+      "reviews": [
+        "review #31",
+        "review #32",
+        "review #33"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Boots",
+      "description": "Boots decription",
+      "price": 500,
+      "isAvailable": true,
+      "category": "Shoes",
+      "availableSizes": [
+        36,
+        37,
+        38,
+        40,
+        41
+      ],
+      "selectedSize": 36,
+      "reviews": [
+        "review #41"
+      ]
+    }
+  ]
+}

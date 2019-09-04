@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ProductModel } from '../models/product.model';
 import { ProductCategory } from '../models/product-category.enum';
 import { of, Observable } from 'rxjs';
-import { ProductListComponent } from '../components/product-list/product-list.component';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Injectable({
@@ -41,6 +40,10 @@ export class ProductsService {
     this.localStorageService.setItem('products', JSON.stringify(this.productsList));
   }
 
+  getDefaultProductsList() {
+    return this.productsListDefault;
+  }
+
   getProductReviews(id: number) {
     const result = this.productsList.filter(c => c.id === id).map(c => c.reviews);
     return result;
@@ -59,15 +62,15 @@ export class ProductsService {
   }
 
   constructor(public localStorageService: LocalStorageService) {
-    this.productsListDefault =  [
+    this.productsListDefault = [
       new ProductModel(1, 'Dress', 'Summer dress', 300, false, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-      36, ['review #11', 'review #12']),
+        36, ['review #11', 'review #12']),
       new ProductModel(2, 'Skirt', 'Nice skirt', 150, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-      36, ['review #21', 'review #22']),
+        36, ['review #21', 'review #22']),
       new ProductModel(3, 'Pants', 'Pants description', 200, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-      36, ['review #31', 'review #32', 'review #33']),
+        36, ['review #31', 'review #32', 'review #33']),
       new ProductModel(4, 'Boots', 'Boots decription', 500, true, ProductCategory.Shoes, [36, 37, 38, 40, 41],
-      36, ['review #41']),
+        36, ['review #41']),
     ];
   }
 }

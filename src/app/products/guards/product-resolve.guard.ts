@@ -6,16 +6,16 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, take } from 'rxjs/operators';
 
 import { ProductModel } from './../models/product.model';
-import { ProductsService } from './../services/products.service';
 import { ProductsModule } from '../products.module';
 import { ProductCategory } from '../models/product-category.enum';
+import { ProductsObservableService } from '..';
 
 @Injectable({
   providedIn: ProductsModule
 })
 export class ProductResolveGuard implements Resolve<ProductModel> {
   constructor(
-    private productService: ProductsService,
+    private productObservableService: ProductsObservableService,
     private router: Router
   ) {}
 
@@ -27,7 +27,7 @@ export class ProductResolveGuard implements Resolve<ProductModel> {
 
     const id = +route.paramMap.get('productID');
 
-    return this.productService.getProductById(id).pipe(
+    return this.productObservableService.getProduct(id).pipe(
       map((product: ProductModel) => {
         if (product) {
           return product;

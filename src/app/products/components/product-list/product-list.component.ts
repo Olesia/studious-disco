@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ProductsService } from 'src/app/products/services/products.service';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService, ProductsPromiseService } from 'src/app/products/services';
 import { ProductModel } from '../../models/product.model';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,12 +13,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: Promise<Array<ProductModel>>;
 
-  constructor(public productService: ProductsService, public cartService: CartService,
-              private router: Router, private route: ActivatedRoute
+  constructor(
+    public productService: ProductsService,
+    public productsPromiseService: ProductsPromiseService,
+    public cartService: CartService,
+    private router: Router, private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.products = Promise.resolve(this.productService.getProducts());
+    this.products = this.productsPromiseService.getProducts();
   }
 
   onProductAdded(product: ProductModel): void {
