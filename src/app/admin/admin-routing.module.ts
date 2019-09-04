@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent, ManageProductsComponent, ManageProductsFormComponent, ManageOrdersComponent } from './components';
+import { AdminComponent, ManageProductsComponent, ManageProductsFormComponent,
+  ManageOrdersComponent, ManageProductsListComponent } from './components';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ProductResolveGuard } from '../products/guards';
 
@@ -31,7 +32,11 @@ const routes: Routes = [
                   product: ProductResolveGuard
                 },
                 component: ManageProductsFormComponent
-              }
+              },
+              {
+                path: '',
+                component: ManageProductsListComponent
+              },
             ]
           },
           { path: 'orders', component: ManageOrdersComponent }

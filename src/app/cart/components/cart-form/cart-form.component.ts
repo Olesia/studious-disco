@@ -1,26 +1,23 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ProductsService } from 'src/app/products/services/products.service';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItemModel } from '../../models/cart-item-model';
 import { CartService } from '../../services/cart.service';
-import { ProductModel } from 'src/app/products/models/product.model';
+import { ProductsPromiseService } from 'src/app/products';
 
 @Component({
   templateUrl: './cart-form.component.html',
   styleUrls: ['./cart-form.component.css']
 })
-export class CartFormComponent implements OnInit, OnDestroy {
+export class CartFormComponent implements OnInit {
 
   cartItem: CartItemModel;
 
   @ViewChild('sizeSelect', { static: false }) selectedSize: ElementRef;
 
-  private sub: Subscription;
   private isDeletedParam: boolean;
 
   constructor(
-    private productsService: ProductsService,
+    private productsPromiseService: ProductsPromiseService,
     private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router
@@ -30,19 +27,12 @@ export class CartFormComponent implements OnInit, OnDestroy {
     this.cartItem = new CartItemModel(null, 1);
     const id = +this.route.snapshot.paramMap.get('cartItemId');
     this.isDeletedParam = JSON.parse(this.route.snapshot.paramMap.get('isDeleted'));
-    this.sub = this.productsService.getProductById(id)
-      .subscribe(
-        product => {
-          const productCopy = new ProductModel(product.id, product.name, product.description, product.price,
-            product.isAvailable, product.category, product.availableSizes, product.selectedSize, product.reviews);
-          this.cartItem = {...new CartItemModel(productCopy, 1)};
+    this.productsPromiseService.getProduct(id)
+      .then( product => {
+          this.cartItem = {...new CartItemModel(product, 1)};
         },
         err => console.log(err)
       );
-  }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
   onSelectChange() {

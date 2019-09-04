@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">About
     </div>
-    <div class="panel-body" appFontChanger = "14">
+    <div class="panel-body" appFontChanger = "14" *ngIf="applicationInfo">
         <p> User # {{ userInfo.id }}: 
             <span *ngIf="userInfo.login"> {{ userInfo.login }}</span>
             <span *ngIf="userInfo.email"> {{ userInfo.email }}</span>

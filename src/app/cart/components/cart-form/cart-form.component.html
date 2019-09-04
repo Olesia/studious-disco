@@ -1,7 +1,7 @@
 <div *ngIf="!isDeletedParam; else deleteForm">
     <div>
         <p>Adding product to the cart: </p>
-        <div *ngIf="cartItem">
+        <div *ngIf="cartItem.product">
             <ul>
                 <li>Name: {{ cartItem.product.name }}</li>
                 <li>Category: {{ cartItem.product.category | uppercase }}</li>

@@ -1,16 +1,4 @@
 <h4>Products</h4>
 <button class="btn btn-success" (click)="AddNewProduct()">Add new product</button>
-<button class="btn btn-danger pull-right" (click)="onSetToDefaultClick()">Set to default</button>
 <br />
 <router-outlet></router-outlet>
-<div *ngFor="let product of products$| async">
-<ul>
-        <li>Name: {{ product.name }}</li>
-        <li>Category: {{ product.category | uppercase }}</li>
-        <li>Description: {{ product.description }}</li>
-        <li>Price: {{ product.price | currency : '₴' }}</li>
-        <li>Sizes: {{ product.availableSizes }}</li>
-        <button (click)="onEditProduct(product.id)" class="btn btn-primary">Edit</button>
-    </ul>
-  
-</div>

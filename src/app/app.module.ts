@@ -11,7 +11,8 @@ import { AboutComponent } from './layout';
 import { ProductsRoutingModule } from './products/products-routing.module';
 import { OrderModule } from './order/order.module';
 import { AdminModule } from './admin/admin.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './core/interceptors';
 
 @NgModule({
   declarations: [
@@ -20,17 +21,18 @@ import { AdminModule } from './admin/admin.module';
   ],
 
   imports: [
+    HttpClientModule,
     BrowserModule,
     SharedModule,
     CoreModule,
     ProductsModule,
     LayoutModule,
     OrderModule,
+    AdminModule,
     ProductsRoutingModule,
     AppRoutingModule,
-    AdminModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {
