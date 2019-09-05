@@ -9,7 +9,7 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
 })
 export class OrderComponent implements OnInit {
 
-  constructor(public cartService: CartService, public localStorage: LocalStorageService) { }
+  constructor(public cartService: CartService, public localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.SaveOrderToLocalStorage();
@@ -19,9 +19,9 @@ export class OrderComponent implements OnInit {
   private SaveOrderToLocalStorage() {
     this.cartService.getCartItemsList()
     .subscribe(order => {
-      const orders = JSON.parse(this.localStorage.getItem('orders')) || [];
+      const orders = JSON.parse(this.localStorageService.getItem('orders')) || [];
       orders.push(order);
-      this.localStorage.setItem('orders', JSON.stringify(orders));
+      this.localStorageService.setItem('orders', JSON.stringify(orders));
     });
   }
 

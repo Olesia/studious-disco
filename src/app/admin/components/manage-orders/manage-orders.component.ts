@@ -14,6 +14,7 @@ export class ManageOrdersComponent implements OnInit {
   ngOnInit() {
     this.ordersList = JSON.parse(this.localStorageService.getItem('orders'));
   }
+
   clearOrders() {
     this.ordersList.length = 0;
     this.localStorageService.removeItem('orders');

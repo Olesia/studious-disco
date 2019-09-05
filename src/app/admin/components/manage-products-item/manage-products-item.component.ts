@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { ProductModel } from 'src/app/products/models/product.model';
 
 @Component({
@@ -8,7 +8,6 @@ import { ProductModel } from 'src/app/products/models/product.model';
 })
 export class ManageProductsItemComponent {
   @Input() product: ProductModel;
-
   @Output() editProduct = new EventEmitter<number>();
 
   onEditProduct() {
