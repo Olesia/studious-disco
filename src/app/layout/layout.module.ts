@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AboutComponent, LoginComponent, PathNotFoundComponent } from './components';
+import { LoginComponent, PathNotFoundComponent } from './components';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({

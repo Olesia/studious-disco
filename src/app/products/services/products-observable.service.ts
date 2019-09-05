@@ -1,9 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import {
-    HttpClient,
-    HttpHeaders,
-    HttpErrorResponse
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -42,12 +38,12 @@ export class ProductsObservableService {
         const url = `${this.productsUrl}/${product.id}`;
         const body = JSON.stringify(product);
         const options = {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+            headers: new HttpHeaders({ 'Content-Type': 'application/json' })
         };
         return this.http
-              .put<ProductModel>(url, body, options)
-              .pipe( catchError(this.handleError) );
-      }
+            .put<ProductModel>(url, body, options)
+            .pipe(catchError(this.handleError));
+    }
 
     private handleError(err: HttpErrorResponse) {
         if (err.error instanceof Error) {

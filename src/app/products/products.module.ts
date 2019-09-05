@@ -9,11 +9,20 @@ import { ProductsAPIProvider } from './products.config';
 
 
 @NgModule({
-  declarations: [ProductComponent, ProductListComponent, ProductReviewsComponent],
-  imports: [CommonModule, ProductsServicesModule, RouterModule],
+  declarations: [
+    ProductComponent,
+    ProductListComponent,
+    ProductReviewsComponent],
+
+  imports: [
+    CommonModule,
+    ProductsServicesModule,
+    RouterModule ],
+
   exports: [
     ProductListComponent
   ],
+
   providers: [
     ProductsAPIProvider
   ]

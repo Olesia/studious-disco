@@ -1,5 +1,4 @@
 import { Component, OnInit, Optional, Inject, OnDestroy } from '@angular/core';
-
 import { LocalStorageService } from '../../../core/services/local-storage.service';
 import { ConfigOptionsService } from '../../../core/services/config-options.service';
 import { ConfigOptionsModel } from 'src/app/core/models/config-options.model';
@@ -12,6 +11,7 @@ import { AppSettingsService } from 'src/app/core/services/app-settings.service';
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
+
   providers: [{ provide: Storage, useClass: LocalStorageService },
   { provide: ConstantsService, useValue: constInstance },
     GeneratorService,

@@ -11,6 +11,19 @@ export class ProductsService {
   productsListDefault: Array<ProductModel>;
   productsList: Array<ProductModel>;
 
+  constructor(public localStorageService: LocalStorageService) {
+    this.productsListDefault = [
+      new ProductModel(1, 'Dress', 'Summer dress', 300, false, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
+        36, ['review #11', 'review #12']),
+      new ProductModel(2, 'Skirt', 'Nice skirt', 150, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
+        36, ['review #21', 'review #22']),
+      new ProductModel(3, 'Pants', 'Pants description', 200, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
+        36, ['review #31', 'review #32', 'review #33']),
+      new ProductModel(4, 'Boots', 'Boots decription', 500, true, ProductCategory.Shoes, [36, 37, 38, 40, 41],
+        36, ['review #41']),
+    ];
+  }
+
   getProducts(): Array<ProductModel> {
     this.checkProducts();
     return this.productsList;
@@ -59,18 +72,5 @@ export class ProductsService {
     } else {
       this.productsList = JSON.parse(this.localStorageService.getItem('products'));
     }
-  }
-
-  constructor(public localStorageService: LocalStorageService) {
-    this.productsListDefault = [
-      new ProductModel(1, 'Dress', 'Summer dress', 300, false, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-        36, ['review #11', 'review #12']),
-      new ProductModel(2, 'Skirt', 'Nice skirt', 150, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-        36, ['review #21', 'review #22']),
-      new ProductModel(3, 'Pants', 'Pants description', 200, true, ProductCategory.Clothing, [36, 38, 40, 42, 44, 46],
-        36, ['review #31', 'review #32', 'review #33']),
-      new ProductModel(4, 'Boots', 'Boots decription', 500, true, ProductCategory.Shoes, [36, 37, 38, 40, 41],
-        36, ['review #41']),
-    ];
   }
 }
