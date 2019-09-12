@@ -13,6 +13,7 @@ export class AppSettingsService {
   private defaultSettings = { App: 'My shop', Ver: '1.0' };
 
   constructor(
+    // Почему эти зависимости публичные?
     public localStorageService: LocalStorageService,
     public constantsService: ConstantsService,
 

@@ -11,6 +11,7 @@ export class TimeInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       filter(event => event.type === HttpEventType.Response),
+      // если не предполагается менять поток, то можно tap()
       map((event: HttpResponse<any>) => {
         console.log(req.url + ' time: ' + (performance.now() - start) + 'ms');
         return event;

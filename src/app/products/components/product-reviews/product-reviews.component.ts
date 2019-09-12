@@ -9,7 +9,7 @@ import { switchMap, startWith } from 'rxjs/operators';
   styleUrls: ['./product-reviews.component.css']
 })
 export class ProductReviewsComponent implements OnInit {
-  reviewsList: string[] = [];
+  reviewsList: string[] = [];// может использовать Observable + async?
 
   constructor(
     private productsService: ProductsService,

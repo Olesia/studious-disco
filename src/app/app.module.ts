@@ -29,6 +29,8 @@ import { httpInterceptorProviders } from './core/interceptors';
     LayoutModule,
     OrderModule,
     AdminModule,
+    // Если вы подключаете этот модуль сюда, а не в ProductsModule,
+    // то вам приходится импортировать дополнительно в ProductsModule RouterModule
     ProductsRoutingModule,
     AppRoutingModule,
   ],
