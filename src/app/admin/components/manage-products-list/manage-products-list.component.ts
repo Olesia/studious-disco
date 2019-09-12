@@ -19,6 +19,7 @@ export class ManageProductsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // отписки не будет?
     this.sub = this.productsObservableService.getProducts()
     .subscribe(
       data => (

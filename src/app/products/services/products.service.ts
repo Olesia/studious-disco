@@ -33,6 +33,8 @@ export class ProductsService {
     this.checkProducts();
     const result: Observable<Array<ProductModel>> = of(this.productsList);
     return result;
+    // или так
+    // return of(this.productsList) as Observable<Array<ProductModel>>
   }
 
   addProduct(product: ProductModel) {

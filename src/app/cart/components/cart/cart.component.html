@@ -12,6 +12,7 @@
     Is Descending
     <br />
     <!-- <div *ngIf="(cartList$| async)?.length > 0; else emptyCart"> -->
+      <!-- Думаю, что перед orderBy надо | а не :  -->
     <div *ngFor="let cartItem of cartList$ | async : orderBy: sortByField: sortIsDesc">
         <app-cart-item [cartItem]="cartItem" (removeCartItem)="onCartItemRemoving($event)" (plusOne)="onPlusOne($event)"
             (minusOne)="onMinusOne($event)">
