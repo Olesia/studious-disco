@@ -1,6 +1,6 @@
 import { ProductCategory } from 'src/app/products/models/product-category.enum';
 
-interface IProduct {
+export interface IProduct {
   id: number;
   name: string;
   description: string;

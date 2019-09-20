@@ -7,6 +7,7 @@ import { CartItemModel } from 'src/app/cart/models/cart-item-model';
   templateUrl: './manage-orders.component.html',
   styleUrls: ['./manage-orders.component.css']
 })
+
 export class ManageOrdersComponent implements OnInit {
   ordersList: Array<CartItemModel> [];
   constructor(public localStorageService: LocalStorageService) { }

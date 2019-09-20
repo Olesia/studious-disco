@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
-import { RouterModule } from '@angular/router';
+import { ProductComponent,
+         ProductListComponent,
+         ProductReviewsComponent } from './components';
 import { ProductsServicesModule } from './products-services.module';
 import { ProductsAPIProvider } from './products.config';
-
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,8 @@ import { ProductsAPIProvider } from './products.config';
   imports: [
     CommonModule,
     ProductsServicesModule,
-    RouterModule ],
+    ProductsRoutingModule
+  ],
 
   exports: [
     ProductListComponent

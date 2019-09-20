@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsObservableService } from 'src/app/products';
-import { Subscription } from 'rxjs';
-import { ProductModel } from 'src/app/products/models/product.model';
+import { Observable } from 'rxjs';
+import { ProductsState, AppState } from 'src/app/core/@ngrx';
+import { Store, select } from '@ngrx/store';
+import * as ProductsActions from './../../../core/@ngrx/products/products.actions';
 
 @Component({
   selector: 'app-manage-products-list',
@@ -10,21 +11,16 @@ import { ProductModel } from 'src/app/products/models/product.model';
   styleUrls: ['./manage-products-list.component.css']
 })
 export class ManageProductsListComponent implements OnInit {
-  public products: Array<ProductModel> = [];
-  private sub: Subscription;
+  productsState$: Observable<ProductsState>;
 
   constructor(
-    public productsObservableService: ProductsObservableService,
+    private store: Store<AppState>,
     private router: Router
   ) { }
 
   ngOnInit() {
-    // отписки не будет?
-    this.sub = this.productsObservableService.getProducts()
-    .subscribe(
-      data => (
-        this.products = data
-    ));
+    this.productsState$ = this.store.pipe(select('products'));
+    this.store.dispatch(ProductsActions.getProducts());
   }
 
   onEditProduct(id: number) {

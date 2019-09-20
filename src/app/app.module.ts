@@ -8,11 +8,11 @@ import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
 import { LayoutModule } from './layout/layout.module';
 import { AboutComponent } from './layout';
-import { ProductsRoutingModule } from './products/products-routing.module';
 import { OrderModule } from './order/order.module';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './core/interceptors';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +29,8 @@ import { httpInterceptorProviders } from './core/interceptors';
     LayoutModule,
     OrderModule,
     AdminModule,
-    // Если вы подключаете этот модуль сюда, а не в ProductsModule,
-    // то вам приходится импортировать дополнительно в ProductsModule RouterModule
-    ProductsRoutingModule,
     AppRoutingModule,
+    RootStoreModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

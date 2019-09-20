@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { HttpClient, HttpErrorResponse, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { retry, catchError, map } from 'rxjs/operators';
-import { throwError, EmptyError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { ConstantsService } from './constants.service';
 
 @Injectable({
@@ -13,9 +13,8 @@ export class AppSettingsService {
   private defaultSettings = { App: 'My shop', Ver: '1.0' };
 
   constructor(
-    // Почему эти зависимости публичные?
-    public localStorageService: LocalStorageService,
-    public constantsService: ConstantsService,
+    private localStorageService: LocalStorageService,
+    private constantsService: ConstantsService,
 
     private http: HttpClient) { }
 

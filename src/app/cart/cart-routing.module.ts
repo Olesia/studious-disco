@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CartComponent } from './components/cart/cart.component';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { CartContainerComponent } from './cart-container.component';
-import { CartFormComponent } from './components/cart-form/cart-form.component';
+import { CartContainerComponent, CartListComponent, CartFormComponent, CartItemComponent } from './components';
 
 const routes: Routes = [
   {
@@ -20,7 +17,7 @@ const routes: Routes = [
     },
     {
       path: '',
-      component: CartComponent
+      component: CartListComponent
     }]
   }
 ];
@@ -30,5 +27,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class CartRoutingModule {
-  static components = [CartComponent, CartFormComponent, CartItemComponent, CartContainerComponent];
+  static components = [CartContainerComponent, CartListComponent, CartFormComponent, CartItemComponent];
  }

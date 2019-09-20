@@ -11,9 +11,8 @@
     <input type="checkbox" [checked]="sortIsDesc" #isDesc (change)="onCheckBoxChange()" />
     Is Descending
     <br />
-    <!-- <div *ngIf="(cartList$| async)?.length > 0; else emptyCart"> -->
-      <!-- Думаю, что перед orderBy надо | а не :  -->
-    <div *ngFor="let cartItem of cartList$ | async : orderBy: sortByField: sortIsDesc">
+
+    <div *ngFor="let cartItem of cartList$ | async | orderBy: sortByField: sortIsDesc">
         <app-cart-item [cartItem]="cartItem" (removeCartItem)="onCartItemRemoving($event)" (plusOne)="onPlusOne($event)"
             (minusOne)="onMinusOne($event)">
         </app-cart-item>
@@ -28,8 +27,8 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
-    <button class="btn btn-primary pull-right" (click)="onOrderCreating()" style="margin-top: 10px">Create Order</button>
+    <button class="btn btn-primary pull-right" (click)="onOrderCreating()" style="margin-top: 10px">Create
+        Order</button>
 </div>
 <ng-template #emptyCart>
     The cart is empty

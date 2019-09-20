@@ -5,12 +5,12 @@ import { CartItemModel } from '../../models/cart-item-model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-cart-list',
+  templateUrl: './cart-list.component.html',
+  styleUrls: ['./cart-list.component.css']
 })
 
-export class CartComponent implements OnInit {
+export class CartListComponent implements OnInit {
   cartList$: Observable<Array<CartItemModel>>;
   totalPrice: number;
   totalCount: number;
@@ -28,11 +28,12 @@ export class CartComponent implements OnInit {
     this.cartList$ = this.cartService.getCartItemsList();
     this.totalPrice = this.cartService.totalPrice;
     this.totalCount = this.cartService.totalCount;
+
     this.sub = this.cartService.cartList$.subscribe(
       data => (
         this.totalPrice = this.cartService.totalPrice,
         this.totalCount = this.cartService.totalCount
-    ));
+      ));
   }
 
   onCheckBoxChange() {
@@ -45,7 +46,7 @@ export class CartComponent implements OnInit {
 
   onCartItemRemoving(cartItem: CartItemModel): void {
     const link = ['cart', 'remove', cartItem.product.id, true];
-    this.router.navigate([{ outlets: { cart: link }}]);
+    this.router.navigate([{ outlets: { cart: link } }]);
   }
 
   onPlusOne(cartItem: CartItemModel): void {

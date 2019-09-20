@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductModel } from 'src/app/products/models/product.model';
-import { Router, ActivatedRoute } from '@angular/router';
-import { pluck } from 'rxjs/operators';
-import { ProductsPromiseService, ProductsObservableService } from 'src/app/products';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ProductModel, IProduct } from 'src/app/products/models/product.model';
+import { Router } from '@angular/router';
+
+// @NgRx
+import { Store, select } from '@ngrx/store';
+import { AppState, selectSelectedProductByUrl } from './../../../core/@ngrx';
+import * as ProductsActions from './../../../core/@ngrx/products';
+
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-manage-products-form',
@@ -10,30 +15,36 @@ import { ProductsPromiseService, ProductsObservableService } from 'src/app/produ
   styleUrls: ['./manage-products-form.component.css']
 })
 
-export class ManageProductsFormComponent implements OnInit {
+export class ManageProductsFormComponent implements OnInit, OnDestroy {
   product: ProductModel;
   originalProduct: ProductModel;
+  private sub: Subscription;
+
   constructor(
-    public productsPromiseService: ProductsPromiseService,
-    public productObservableService: ProductsObservableService,
-    private route: ActivatedRoute,
+    private store: Store<AppState>,
     private router: Router) { }
 
   ngOnInit() {
-    this.route.data.pipe(pluck('product')).subscribe((product: ProductModel) => {
-      this.product = { ...product };
-    });
+    this.product = new ProductModel(0, '', '', 0, true, null);
+    this.sub = this.store
+      .pipe(select(selectSelectedProductByUrl))
+      .subscribe(product => this.product = {...product});
+
+  }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   onSaveProduct() {
-    const product = { ...this.product };
-    if (product.id === 0) {
-      this.productsPromiseService.addProduct(this.product)
-        .then(c => this.onGoBack());
+    const product = { ...this.product } as IProduct;
+    if (product.id) {
+      this.store.dispatch(ProductsActions.updateProduct({ product }));
     } else {
-      this.productObservableService.updateProduct(this.product).subscribe(c => this.onGoBack());
+      this.store.dispatch(ProductsActions.createProduct({ product }));
     }
+    // this.onGoBack();
   }
+
   onGoBack() {
     this.router.navigate(['admin', 'products']);
   }

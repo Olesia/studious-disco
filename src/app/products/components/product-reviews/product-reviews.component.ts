@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { switchMap, startWith } from 'rxjs/operators';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { ProductsPromiseService } from '../..';
 
 @Component({
   selector: 'app-product-reviews',
@@ -9,21 +9,19 @@ import { switchMap, startWith } from 'rxjs/operators';
   styleUrls: ['./product-reviews.component.css']
 })
 export class ProductReviewsComponent implements OnInit {
-  reviewsList: string[] = [];// может использовать Observable + async?
+  reviewsList: Promise<Array<string>>;
 
   constructor(
-    private productsService: ProductsService,
+    private productsPromiseService: ProductsPromiseService,
     private route: ActivatedRoute,
-    private router: Router
-
   ) { }
 
   ngOnInit() {
     this.route.paramMap
       .pipe(
-        switchMap((params: ParamMap) => this.productsService.getProductReviews(+params.get('productID'))))
+        switchMap((params: ParamMap) =>
+        this.reviewsList = this.productsPromiseService.getReviewsByProductId(+params.get('productID'))))
       .subscribe(
-        review => this.reviewsList = review,
         err => console.log(err)
     );
   }
