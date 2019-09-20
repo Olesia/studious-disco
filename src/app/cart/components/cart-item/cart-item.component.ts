@@ -15,8 +15,6 @@ export class CartItemComponent {
   @Output() minusOne: EventEmitter<CartItemModel> = new EventEmitter<CartItemModel>();
   @Output() removeCartItem: EventEmitter<CartItemModel> = new EventEmitter<CartItemModel>();
 
-  count = 1;
-
   constructor() { }
 
   plusOneCartItem(): void {

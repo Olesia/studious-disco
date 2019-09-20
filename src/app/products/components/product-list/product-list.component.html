@@ -1,7 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-heading">Products</div>
     <div class="panel-body">
-        <app-product *ngFor="let product of products | async" [product]="product" (addToCart)="onProductAdded($event)">
+            <p *ngIf="(productsError$ | async) as value">{{value}}</p>
+        <app-product *ngFor='let product of (products$ | async)' [product]="product" 
+                    (addToCart)="onProductAdded($event)"
+                    (showReviews)="onShowReviews($event)">
         </app-product>
     </div>
 </div>

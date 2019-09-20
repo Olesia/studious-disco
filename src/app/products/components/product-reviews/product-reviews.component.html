@@ -1,4 +1,3 @@
-<ul *ngFor="let review of reviewsList">
+<ul *ngFor="let review of reviewsList | async">
     <li>{{ review }}</li>
-    
 </ul>

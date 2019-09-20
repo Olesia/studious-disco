@@ -31,10 +31,7 @@ export class ProductsService {
 
   getProductsList(): Observable<ProductModel[]> {
     this.checkProducts();
-    const result: Observable<Array<ProductModel>> = of(this.productsList);
-    return result;
-    // или так
-    // return of(this.productsList) as Observable<Array<ProductModel>>
+    return of(this.productsList) as Observable<Array<ProductModel>>;
   }
 
   addProduct(product: ProductModel) {

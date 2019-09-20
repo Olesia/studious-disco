@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import * as RouterActions from './../../../core/@ngrx/router/router.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/core/@ngrx';
 
 @Component({
   selector: 'app-manage-products',
@@ -8,14 +10,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ManageProductsComponent {
   constructor(
-    private route: ActivatedRoute,
-    private router: Router) { }
+    private store: Store<AppState>) { }
 
   AddNewProduct() {
-    this.router.navigate(['add'], { relativeTo: this.route});
+    this.store.dispatch(RouterActions.go({
+      path: ['admin/products/add']
+    }));
   }
 
   onEditProduct(id: number) {
-    this.router.navigate(['edit', id], { relativeTo: this.route});
+    const link = ['edit', id];
+    this.store.dispatch(RouterActions.go({
+      path: link
+    }));
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { ProductModel } from './../models/product.model';
+import { ProductModel, IProduct } from './../models/product.model';
 import { ProductsServicesModule } from '../products-services.module';
 
 @Injectable({
@@ -13,11 +13,11 @@ export class ProductsPromiseService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(): Promise<ProductModel[]> {
+  getProducts(): Promise<IProduct[]> {
     return this.http
       .get(this.productsUrl)
       .toPromise()
-      .then(response => response as ProductModel[])
+      .then(response => response as IProduct[])
       .catch(this.handleError);
   }
 
@@ -28,6 +28,16 @@ export class ProductsPromiseService {
       .get(url)
       .toPromise()
       .then(response => response as ProductModel)
+      .catch(this.handleError);
+  }
+
+  getReviewsByProductId(id: number): Promise<Array<string>> {
+    const url = `${this.productsUrl}/${id}`;
+
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => (response as ProductModel).reviews)
       .catch(this.handleError);
   }
 

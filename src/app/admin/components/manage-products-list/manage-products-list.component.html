@@ -1,4 +1,4 @@
-<app-manage-products-item *ngFor="let product of products" 
+<app-manage-products-item *ngFor='let product of (productsState$ | async).data'
     [product]="product"
     (editProduct)="onEditProduct($event)">
 </app-manage-products-item>

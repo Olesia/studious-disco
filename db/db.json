@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Dress",
       "description": "Summer dress",
-      "price": 302,
+      "price": 305,
       "isAvailable": false,
       "category": "Clothing",
       "availableSizes": [

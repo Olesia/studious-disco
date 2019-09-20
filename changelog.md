@@ -9,7 +9,7 @@
 - Cart service is  realised and uses subling communication with product component
 - Remove product from the cart and Total price calculation functionality is realised
 
-## [2.0.0] - 2019-07-18
+## [2.0.0] - Components - 2019-07-18
 ### Added
 - New Modules: CartModule, ProductsModule, SharedModule
 - ProductListComponent: Added check if product is available
@@ -25,24 +25,24 @@
 - Buttton 'Buy' is inavailable if product does not exist
 - Cart service calculations are changed
 
-## [3.0.0] - 2019-07-23
+## [3.0.0] - Services - 2019-07-23
 ###Added
 - Functionality: Clear cart
 - Services: LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService,          GeneratorFactoryService(function) - according to the task
 - Components: AboutComponent - demonstrate all services described above
 - Directives: Font-changer - demonstrate using render2 and elementRef
 
-## [4.0.0] - 2019-07-26
-###Added
+## [4.0.0] - Filters - 2019-07-26
+### Added
 - Currency filters for all prices
 - Date filter for updated date on app component
 - Uppercase filter for product - category
 - OrderByPipe filter for cart items, added select and checkbox to configure it
 
-###Updated
+### Updated
 - GetProducts to returns promise 
 
-##[5.0.0] - 2019-09-02
+## [5.0.0] - Routing - 2019-09-02
 ###Added
 - Routing for product-list
 - Reviews component + routing
@@ -56,10 +56,21 @@
 - Saving products and orders to Local storage
 - Setting products to default list
 
-##[6.0.0] - 2019-09-04
-###Added
+## [6.0.0] - Http - 2019-09-04
+### Added
 - Json server
 - ProductsPromiseService and ProductObservableService
 - Using new services on admin - manage-products
 - TimeInterseptor with filter
 - AppSettings service and use app settings on AboutComponent
+
+## [7.0.0] - Ngrx - 2019-09-20
+### Added
+- Products state, actions, reducer, effects
+- Products Feature selectors, State selector
+- Router store
+- Selector getProductByUrl, Selector by GO
+
+### Updated
+- Fixed bugs with filters
+- Fixed bugs with Reviews
