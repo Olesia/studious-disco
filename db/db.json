@@ -82,6 +82,17 @@
       "reviews": [
         "review #41"
       ]
+    },
+    {
+      "id": 5,
+      "name": "Test1111",
+      "description": "Nice skirt",
+      "price": 578,
+      "isAvailable": false,
+      "category": null,
+      "availableSizes": null,
+      "selectedSize": 0,
+      "reviews": []
     }
   ]
 }
