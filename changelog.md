@@ -74,3 +74,12 @@
 ### Updated
 - Fixed bugs with filters
 - Fixed bugs with Reviews
+
+## [8.0.0] - Forms - 2019-09-24
+### Added
+- ProcessOrderComponent + validation
+- Custom validator for First name
+- Validation directive for Email
+- Duplicate and delete phone number functionality
+- Validation on blur
+- Validation messages from component
