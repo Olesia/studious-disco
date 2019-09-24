@@ -13,6 +13,7 @@ import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './core/interceptors';
 import { RootStoreModule } from './core/@ngrx/root-store.module';
+import { ValidatorsModule } from './validators/validators.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RootStoreModule } from './core/@ngrx/root-store.module';
     LayoutModule,
     OrderModule,
     AdminModule,
+    ValidatorsModule,
     AppRoutingModule,
     RootStoreModule
   ],

@@ -1,0 +1,93 @@
+<div class="panel-body">
+    <form class="form-horizontal" [formGroup]="orderForm" (ngSubmit)="onSave()">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-md-2 control-label">First Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)"
+                        formControlName="firstName" (blur)="onBlurFirstName()" [ngClass]="{'has-error': (orderForm.get('firstName').touched || 
+                                        orderForm.get('firstName').dirty) && !orderForm.get('firstName').valid }" />
+
+                    <span class="help-block" *ngIf="validationMessageFirstName">
+                        {{ validationMessageFirstName }}
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">Last Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="lastNameId" type="text" placeholder="Last Name"
+                        formControlName="lastName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="emailId" type="text" placeholder="Email (required)"
+                        formControlName="email" appEmailValidator (blur)="onBlurEmail()" [ngClass]="{'has-error': (orderForm.get('email').touched || 
+                                        orderForm.get('email').dirty) && !orderForm.get('email').valid }" />
+                    <span class="help-block" *ngIf="validationMessageEmail">
+                        {{ validationMessageEmail }}
+                    </span>
+                </div>
+
+            </div>
+            <div formArrayName="phones">
+                <div *ngFor="let number of phones.controls; let i = index" [formGroupName]="i">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Phone #{{i + 1}}</label>
+                        <div class="col-md-8">
+                            <input class="form-control" id="{{'phoneId' + i}}" type="text" placeholder="phone"
+                                formControlName="number" />
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-danger" type="button" (click)="onPhoneRemoved(i)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-2">
+                    <button class="btn btn-primary" type="button" (click)="onAddPhone()">
+                        Add Phone number
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">Self-removal</label>
+                <div class="col-md-8">
+                    <input id="selfRemovalId" type="checkbox" placeholder="Self-removal"
+                        formControlName="selfRemoval" />
+                </div>
+            </div>
+            <div class="form-group" *ngIf="!(orderForm.get('selfRemoval').value)">
+                <label class="col-md-2 control-label">Address</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="addressId" placeholder="Address" formControlName="address">
+                    </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-2">
+                    <span>
+                        <button class="btn btn-primary" type="submit" [disabled]="!orderForm.valid"
+                            [disabled]="!orderForm.valid">
+                            Save
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br>Dirty: {{ orderForm.dirty }}
+<br>Touched: {{ orderForm.touched }}
+<br>Valid: {{ orderForm.valid }}
+<br>Value: {{ orderForm.value | json }}
+<br>Form Status: {{orderForm.status }}
